@@ -7,4 +7,5 @@ Comment[pl]=Wtyczka do programu GIMP z interfejsem do skanowania
 Icon=xsane.png
 Exec=xsane
 Encoding=UTF-8
+Categories=Graphics;Scanning;
 # vi: encoding=utf-8
