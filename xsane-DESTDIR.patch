@@ -1,0 +1,180 @@
+diff -durN xsane-0.57.orig/Makefile.in xsane-0.57/Makefile.in
+--- xsane-0.57.orig/Makefile.in	Sun Nov 14 01:05:41 1999
++++ xsane-0.57/Makefile.in	Sun Mar 12 10:21:22 2000
+@@ -5,19 +5,19 @@
+ top_srcdir = @top_srcdir@
+ top_builddir = .
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-sbindir = @sbindir@
+-libexecdir = @libexecdir@
+-datadir = @datadir@
+-sysconfdir = @sysconfdir@
+-sharedstatedir = @sharedstatedir@
+-localstatedir = @localstatedir@
+-libdir = @libdir@
+-infodir = @infodir@
+-mandir = @mandir@
+-includedir = @includedir@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
++sbindir = $(DESTDIR)@sbindir@
++libexecdir = $(DESTDIR)@libexecdir@
++datadir = $(DESTDIR)@datadir@
++sysconfdir = $(DESTDIR)@sysconfdir@
++sharedstatedir = $(DESTDIR)@sharedstatedir@
++localstatedir = $(DESTDIR)@localstatedir@
++libdir = $(DESTDIR)@libdir@
++infodir = $(DESTDIR)@infodir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
+ oldincludedir = /usr/include
+ 
+ MKDIR = $(top_srcdir)/mkinstalldirs
+diff -durN xsane-0.57.orig/doc/Makefile.in xsane-0.57/doc/Makefile.in
+--- xsane-0.57.orig/doc/Makefile.in	Sun Sep  5 00:12:47 1999
++++ xsane-0.57/doc/Makefile.in	Sun Mar 12 10:21:55 2000
+@@ -5,19 +5,19 @@
+ top_srcdir = @top_srcdir@
+ top_builddir = ..
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-sbindir = @sbindir@
+-libexecdir = @libexecdir@
+-datadir = @datadir@
+-sysconfdir = @sysconfdir@
+-sharedstatedir = @sharedstatedir@
+-localstatedir = @localstatedir@
+-libdir = @libdir@
+-infodir = @infodir@
+-mandir = @mandir@
+-includedir = @includedir@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
++sbindir = $(DESTDIR)@sbindir@
++libexecdir = $(DESTDIR)@libexecdir@
++datadir = $(DESTDIR)@datadir@
++sysconfdir = $(DESTDIR)@sysconfdir@
++sharedstatedir = $(DESTDIR)@sharedstatedir@
++localstatedir = $(DESTDIR)@localstatedir@
++libdir = $(DESTDIR)@libdir@
++infodir = $(DESTDIR)@infodir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
+ oldincludedir = /usr/include
+ configdir = ${sysconfdir}/sane.d
+ sanedatadir = ${datadir}/sane
+diff -durN xsane-0.57.orig/frontend/Makefile.in xsane-0.57/frontend/Makefile.in
+--- xsane-0.57.orig/frontend/Makefile.in	Sat Dec 11 19:13:18 1999
++++ xsane-0.57/frontend/Makefile.in	Sun Mar 12 10:22:35 2000
+@@ -5,19 +5,19 @@
+ top_srcdir = @top_srcdir@
+ top_builddir = ..
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-sbindir = @sbindir@
+-libexecdir = @libexecdir@
+-datadir = @datadir@
+-sysconfdir = @sysconfdir@
+-sharedstatedir = @sharedstatedir@
+-localstatedir = @localstatedir@
+-libdir = @libdir@
+-infodir = @infodir@
+-mandir = @mandir@
+-includedir = @includedir@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
++sbindir = $(DESTDIR)@sbindir@
++libexecdir = $(DESTDIR)@libexecdir@
++datadir = $(DESTDIR)@datadir@
++sysconfdir = $(DESTDIR)@sysconfdir@
++sharedstatedir = $(DESTDIR)@sharedstatedir@
++localstatedir = $(DESTDIR)@localstatedir@
++libdir = $(DESTDIR)@libdir@
++infodir = $(DESTDIR)@infodir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
+ oldincludedir = /usr/include
+ configdir = ${sysconfdir}/sane.d
+ sanedatadir = ${datadir}/sane
+diff -durN xsane-0.57.orig/intl/Makefile.in xsane-0.57/intl/Makefile.in
+--- xsane-0.57.orig/intl/Makefile.in	Sun Sep 26 01:38:36 1999
++++ xsane-0.57/intl/Makefile.in	Sun Mar 12 10:23:21 2000
+@@ -25,15 +25,15 @@
+ top_builddir = ..
+ VPATH = @srcdir@
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
+ transform = @program_transform_name@
+ libdir = $(exec_prefix)/lib
+ includedir = $(prefix)/include
+ datadir = $(prefix)/@DATADIRNAME@
+ localedir = $(datadir)/locale
+ gnulocaledir = $(prefix)/share/locale
+-gettextsrcdir = @datadir@/gettext/intl
++gettextsrcdir = $(DESTDIR)@datadir@/gettext/intl
+ aliaspath = $(localedir):.
+ subdir = intl
+ 
+diff -durN xsane-0.57.orig/lib/Makefile.in xsane-0.57/lib/Makefile.in
+--- xsane-0.57.orig/lib/Makefile.in	Sat Oct  2 00:04:33 1999
++++ xsane-0.57/lib/Makefile.in	Sun Mar 12 10:23:51 2000
+@@ -5,19 +5,19 @@
+ top_srcdir = @top_srcdir@
+ top_builddir = ..
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
+-bindir = @bindir@
+-sbindir = @sbindir@
+-libexecdir = @libexecdir@
+-datadir = @datadir@
+-sysconfdir = @sysconfdir@
+-sharedstatedir = @sharedstatedir@
+-localstatedir = @localstatedir@
+-libdir = @libdir@
+-infodir = @infodir@
+-mandir = @mandir@
+-includedir = @includedir@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
++bindir = $(DESTDIR)@bindir@
++sbindir = $(DESTDIR)@sbindir@
++libexecdir = $(DESTDIR)@libexecdir@
++datadir = $(DESTDIR)@datadir@
++sysconfdir = $(DESTDIR)@sysconfdir@
++sharedstatedir = $(DESTDIR)@sharedstatedir@
++localstatedir = $(DESTDIR)@localstatedir@
++libdir = $(DESTDIR)@libdir@
++infodir = $(DESTDIR)@infodir@
++mandir = $(DESTDIR)@mandir@
++includedir = $(DESTDIR)@includedir@
+ oldincludedir = /usr/include
+ configdir = ${sysconfdir}/sane.d
+ sanedatadir = ${datadir}/sane
+diff -durN xsane-0.57.orig/po/Makefile.in xsane-0.57/po/Makefile.in
+--- xsane-0.57.orig/po/Makefile.in	Mon Feb  7 23:56:57 2000
++++ xsane-0.57/po/Makefile.in	Sun Mar 12 10:24:14 2000
+@@ -17,8 +17,8 @@
+ top_srcdir = @top_srcdir@
+ VPATH = @srcdir@
+ 
+-prefix = @prefix@
+-exec_prefix = @exec_prefix@
++prefix = $(DESTDIR)@prefix@
++exec_prefix = $(DESTDIR)@exec_prefix@
+ datadir = $(prefix)/@DATADIRNAME@
+ localedir = $(datadir)/locale
+ gnulocaledir = $(prefix)/share/locale
