@@ -1,7 +1,7 @@
 Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Name:		xsane
-Version:	0.79
+Version:	0.84
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
