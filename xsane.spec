@@ -67,5 +67,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_gimpplugindir}/*
 %{_datadir}/sane
 %{_mandir}/man1/*
-%{applnkdir}/Graphics/*
+%{_applnkdir}/Graphics/*
 %{_pixmapsdir}/*
