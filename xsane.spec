@@ -1,13 +1,13 @@
 #
 # Conditional build:
-# _with_gtk1	- use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 1.3
+%bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 1.3
 #
 Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.92
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
@@ -22,7 +22,7 @@ URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-%if 0%{?_with_gtk1:1}
+%if %{with gtk1}
 BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
@@ -51,10 +51,14 @@ do komunikacji ze skanerem.
 %patch1 -p1
 %patch2 -p1
 
-%build
+mv -f po/{sr,sr@Latn}.po
+mv -f po/{zh,zh_TW}.po
+
+%{__perl} -pi -e 's/ sr / sr\@Latn /;s/ zh/ zh_TW/' configure.in
+
 # AM_PATH_SANE
 head -n 622 aclocal.m4 | tail -n +457 > acinclude.m4
-%if 0%{?_with_gtk1:1}
+%if %{with gtk1}
 echo 'AC_DEFUN([AM_PATH_GTK2],[])' >> acinclude.m4
 %else
 cat >> acinclude.m4 <<EOF
@@ -70,6 +74,8 @@ CPPFLAGS="\$save_CPPFLAGS"
 EOF
 %endif
 echo 'AC_DEFUN([AM_FUNC_ALLOCA],[AC_FUNC_ALLOCA])' >> acinclude.m4
+
+%build
 cp -f /usr/share/automake/config.* .
 touch po/POTFILES.in
 %{__gettextize}
