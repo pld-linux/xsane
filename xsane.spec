@@ -1,5 +1,5 @@
-Summary:	improved SANE frontend
-Summary(pl):	poprawiony frontend do SANE
+Summary:	Improved SANE frontend
+Summary(pl):	Ulepszony frontend do SANE
 Name:		xsane
 Version:	0.79
 Release:	1
@@ -18,6 +18,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	gtk+-devel
+BuildRequires:	autoconf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
