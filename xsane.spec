@@ -10,13 +10,13 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.xsane.org/
-BuildRequires:	sane-backends-devel
+BuildRequires:	autoconf
 BuildRequires:	gimp-devel
+BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	gtk+-devel
-BuildRequires:	autoconf
+BuildRequires:	sane-backends-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -37,7 +37,10 @@ do komunikacji ze skanerem.
 
 %build
 autoconf
-%configure
+if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
+	CPPFLAGS="`pkg-config libpng12 --cflags`"
+fi
+%configure CPPFLAGS="$CPPFLAGS"
 %{__make}
 
 %install
