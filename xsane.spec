@@ -12,6 +12,7 @@ License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
+# Source0-md5:	b212c9aeb0b6c4b0ada625d512337337
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
