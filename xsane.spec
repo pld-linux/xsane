@@ -26,7 +26,7 @@ BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
 BuildRequires:	gimp-devel >= 1:2.0.0
-BuildRequires:	gtk+2-devel >= 2.0.0
+BuildRequires:	gtk+2-devel >= 1:2.0.0
 %endif
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
