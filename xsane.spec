@@ -43,7 +43,7 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{applnkdir}/Graphics,%{_pixmapsdir}}
+%{__install} -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{_applnkdir}/Graphics,%{_pixmapsdir}}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
