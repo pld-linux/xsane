@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=XSane
+Type=Application
+Comment=A GIMP plugin which provides a scanner interface
+Comment[sv]=Ett GIMP-insticksprogram som erbjuder ett bildläsargränssnitt
+Comment[pl]=Wtyczga do programu GIMP z interfejsem do skanowania
+Icon=xsane.png
+Exec=xsane
