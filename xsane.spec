@@ -9,8 +9,6 @@ Copyright:	GPL
 Source0:	ftp://ftp.de.mostang.com/pub/sane/xsane/%{name}-%{version}.tar.gz
 Patch0:	%{name}-DESTDIR.patch
 URL:		http://www.mostang.com/sane/
-BuildRequires:	XFree86-devel
-BuildRequires:	glib-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
