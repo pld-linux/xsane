@@ -11,6 +11,24 @@
  
    /* before we open any windows we have to read the style file */
    xsane_back_gtk_make_path(sizeof(filename), filename, "xsane", 0, "xsane-style", 0, ".rc", XSANE_PATH_LOCAL_SANE);
+@@ -8077,6 +8077,9 @@
+     old_print_func    = g_set_print_handler((GPrintFunc) null_print_func);
+     old_printerr_func = g_set_printerr_handler((GPrintFunc) null_print_func);
+ 
++#if GIMP_CHECK_VERSION(1,3,15)
++    result = gimp_main(&PLUG_IN_INFO, argc, argv);
++#else
+ #ifdef _WIN32 
+     /* don`t know why, but win32 does need this */
+     set_gimp_PLUG_IN_INFO_PTR(&PLUG_IN_INFO);
+@@ -8088,6 +8091,7 @@
+ #endif
+     /* gimp_main() returns 1 if xsane wasn't invoked by GIMP */
+     result = gimp_main(argc, argv);
++#endif
+ 
+ #if 0
+     /* this is the old version that seems to use the compatibility functions */
 --- xsane-0.90/src/xsane.h.orig	2002-12-14 12:53:46.000000000 +0100
 +++ xsane-0.90/src/xsane.h	2003-05-11 21:07:08.000000000 +0200
 @@ -290,7 +290,8 @@
