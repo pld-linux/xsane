@@ -36,7 +36,7 @@ do komunikacji ze skanerem.
 
 %build
 %{__autoconf}
-%configure CPPFLAGS="$CPPFLAGS"
+%configure
 %{__make}
 
 %install
