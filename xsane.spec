@@ -2,7 +2,7 @@ Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.87
+Version:	0.88
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
@@ -55,8 +55,6 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 ln -sf %{_bindir}/xsane $RPM_BUILD_ROOT%{_gimpplugindir}/xsane
 
-gzip -9nf xsane.{ACCELKEYS,AUTHOR,BACKENDS,BUGS,CHANGES,LOGO,NEWS} \
-	xsane.{PROBLEMS,TODO,BEGINNERS-INFO,ONLINEHELP}
 
 %find_lang %{name}
 
@@ -65,7 +63,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc xsane.{ACCELKEYS,AUTHOR,BACKENDS,BUGS,CHANGES,LOGO,NEWS}
+%doc xsane.{PROBLEMS,TODO,BEGINNERS-INFO,ONLINEHELP}
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_gimpplugindir}/*
 %{_datadir}/sane
