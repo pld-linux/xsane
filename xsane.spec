@@ -42,7 +42,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 rm -rf "$RPM_BUILD_ROOT"
 
-make install DESTDIR="$RPM_BUILD_ROOT"
+%{__make} install DESTDIR="$RPM_BUILD_ROOT"
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
 	xsane.{AUTHOR,BACKENDS,BUGS,CHANGES,LANGUAGES,LOGO,NEWS,ONLINEHELP,PROBLEMS,TODO,WIP} || :
