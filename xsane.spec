@@ -19,6 +19,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define	_prefix	/usr/X11R6
 %define _mandir	/usr/X11R6/man
 
+%define gimp_ver 1.2
+
 %description
 XSane is a graphical scanning frontend. It uses the SANE library to talk to
 scanner.
@@ -55,6 +57,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_datadir}/sane/*
 %attr(755,root,root) %{_libdir}/gimp/%{gimp_ver}/plug-ins/*
+%{_datadir}/sane
 %{_mandir}/man1/*
