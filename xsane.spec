@@ -2,7 +2,7 @@ Summary:	XSANE - GTK based SANE frontend
 Summary(pl):	XSANE - Interfejs do SANE oparty o GTK
 Name:		xsane
 Version:	0.57
-Release:	0
+Release: 1
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 License:	GPL
@@ -11,7 +11,7 @@ Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.mostang.com/sane/
 BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libpng >= 1.0.8
 BuildRequires:	gimp-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
