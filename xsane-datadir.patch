@@ -1,0 +1,97 @@
+--- xsane-0.92/doc/Makefile.in.orig	2004-04-25 16:45:34.000000000 +0200
++++ xsane-0.92/doc/Makefile.in	2004-04-25 16:49:06.745070680 +0200
+@@ -21,7 +21,7 @@
+ oldincludedir = /usr/include
+ configdir = ${sysconfdir}/sane.d
+ sanedatadir = ${datadir}/sane
+-xsanedocdir = ${datadir}/sane/xsane/doc
++xsanedocdir = ${datadir}/xsane/doc
+ 
+ MKDIR = $(top_srcdir)/mkinstalldirs
+ INSTALL = @INSTALL@
+@@ -42,7 +42,7 @@
+ 
+ %.1: %.man
+ 	sed -e 's|@DATADIR@|$(datadir)|g' \
+-	    -e 's|@SANEDATADIR@|$(sanedatadir)|g' \
++	    -e 's|@SANEDATADIR@|$(datadir)|g' \
+ 	    -e 's|@CONFIGDIR@|$(configdir)|g' \
+ 	    -e 's|@LIBDIR@|$(libdir)|g' \
+ 	    -e 's|@BINDIR@|$(bindir)|g' \
+--- xsane-0.92/src/Makefile.in.orig	2004-04-25 16:45:34.000000000 +0200
++++ xsane-0.92/src/Makefile.in	2004-04-25 16:51:29.344392288 +0200
+@@ -22,7 +22,7 @@
+ oldincludedir = /usr/include
+ configdir = ${sysconfdir}/sane.d
+ sanedatadir = ${datadir}/sane
+-xsanedocdir = ${datadir}/sane/xsane/doc
++xsanedocdir = ${datadir}/xsane/doc
+ 
+ MKINSTALLDIRS = @MKINSTALLDIRS@
+ INSTALL = @INSTALL@
+@@ -32,7 +32,7 @@
+ CC = @CC@
+ INCLUDES = -I. -I$(srcdir) -I$(top_builddir)/include -I$(top_srcdir)/include @INCLUDES@
+ DEFS = @DEFS@ -DLOCALEDIR=$(datadir)/locale
+-CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=\$(xsanedocdir) -DPATH_SANE_DATA_DIR=\$(sanedatadir)
++CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=\$(xsanedocdir) -DPATH_SANE_DATA_DIR=\$(datadir)
+ CFLAGS   = @CFLAGS@ @SANE_CFLAGS@ @GIMP_CFLAGS@ @GTK_CFLAGS@
+ LDFLAGS  = @LDFLAGS@ @SANE_LDFLAGS@
+ LIBS     = @SANE_LIBS@ @GIMP_LIBS@ @GTK_LIBS@ @INTLLIBS@ @LIBS@
+@@ -60,19 +60,19 @@
+ all: $(PROGRAMS)
+ 
+ install: $(PROGRAMS)
+-	$(MKINSTALLDIRS) $(bindir) $(sbindir) $(datadir) $(sanedatadir) $(xsanedocdir) $(sanedatadir)/xsane
++	$(MKINSTALLDIRS) $(bindir) $(sbindir) $(datadir) $(xsanedocdir)
+ 	@for program in $(BINPROGS); do \
+ 	  $(INSTALL_PROGRAM) $${program} $(bindir)/$${program}; \
+ 	done
+-	$(INSTALL_DATA) $(srcdir)/xsane-style.rc $(sanedatadir)/xsane/xsane-style.rc
+-	$(INSTALL_DATA) $(srcdir)/xsane-startimage.pnm $(sanedatadir)/xsane/xsane-startimage.pnm
+-	$(INSTALL_DATA) $(srcdir)/xsane-calibration.pnm $(sanedatadir)/xsane/xsane-calibration.pnm
+-	$(INSTALL_DATA) $(srcdir)/xsane-logo.xpm $(sanedatadir)/xsane/xsane-logo.xpm
+-	$(INSTALL_DATA) $(srcdir)/xsane-gpl.txt $(sanedatadir)/xsane/xsane-gpl.txt
+-	$(INSTALL_DATA) $(srcdir)/xsane-eula.txt $(sanedatadir)/xsane/xsane-eula.txt
++	$(INSTALL_DATA) $(srcdir)/xsane-style.rc $(datadir)/xsane/xsane-style.rc
++	$(INSTALL_DATA) $(srcdir)/xsane-startimage.pnm $(datadir)/xsane/xsane-startimage.pnm
++	$(INSTALL_DATA) $(srcdir)/xsane-calibration.pnm $(datadir)/xsane/xsane-calibration.pnm
++	$(INSTALL_DATA) $(srcdir)/xsane-logo.xpm $(datadir)/xsane/xsane-logo.xpm
++	$(INSTALL_DATA) $(srcdir)/xsane-gpl.txt $(datadir)/xsane/xsane-gpl.txt
++	$(INSTALL_DATA) $(srcdir)/xsane-eula.txt $(datadir)/xsane/xsane-eula.txt
+ 	@for logo in *-logo.xpm; do \
+-	  echo installing $(sanedatadir)/xsane/$${logo}; \
+-	  $(INSTALL_DATA) $(srcdir)/$${logo} $(sanedatadir)/xsane/$${logo}; \
++	  echo installing $(datadir)/xsane/$${logo}; \
++	  $(INSTALL_DATA) $(srcdir)/$${logo} $(datadir)/xsane/$${logo}; \
+ 	done 
+ 
+ uninstall:
+@@ -80,17 +80,17 @@
+ 	  echo uninstalling $(bindir)/$${program}...; \
+ 	  rm -f $(bindir)/$${program}; \
+ 	done
+-	echo uninstalling $(sanedatadir)/xsane/xsane-style.rc...
+-	rm -f $(sanedatadir)/xsane/xsane-style.rc
+-	echo uninstalling $(sanedatadir)/xsane/xsane-startimage.pnm...
+-	rm -f $(sanedatadir)/xsane/xsane-startimage.pnm
+-	echo uninstalling $(sanedatadir)/xsane/xsane-calibration.pnm...
+-	rm -f $(sanedatadir)/xsane/xsane-calibration.pnm
+-	echo uninstalling $(sanedatadir)/xsane/xsane-logo.xpm...
+-	rm -f $(sanedatadir)/xsane/xsane-logo.xpm
++	echo uninstalling $(datadir)/xsane/xsane-style.rc...
++	rm -f $(datadir)/xsane/xsane-style.rc
++	echo uninstalling $(datadir)/xsane/xsane-startimage.pnm...
++	rm -f $(datadir)/xsane/xsane-startimage.pnm
++	echo uninstalling $(datadir)/xsane/xsane-calibration.pnm...
++	rm -f $(datadir)/xsane/xsane-calibration.pnm
++	echo uninstalling $(datadir)/xsane/xsane-logo.xpm...
++	rm -f $(datadir)/xsane/xsane-logo.xpm
+ 	@for logo in *-logo.xpm; do \
+-	  echo uninstalling $(sanedatadir)/xsane/$${logo}; \
+-	  rm -f $(sanedatadir)/xsane/$${logo}; \
++	  echo uninstalling $(datadir)/xsane/$${logo}; \
++	  rm -f $(datadir)/xsane/$${logo}; \
+ 	done 
+ 
+ xsane: $(XSANE_OBJS) $(LIBLIB)
