@@ -1,13 +1,17 @@
 Summary:	improved SANE frontend
 Summary(pl):	poprawiony frontend do SANE
 Name:		xsane
-Version:	0.77
+Version:	0.78
 Release:	1
-Group:		X11/Applications/Graphics
 License:	GPL
+Group:		X11/Applications/Graphics
+Group(de):	X11/Applikationen/Grafik
+Group(pl):	X11/Aplikacje/Grafika
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
+Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
-URL:		http://www.xsane.org
+URL:		http://www.xsane.org/
 BuildRequires:	sane-backends-devel
 BuildRequires:	gimp-devel
 BuildRequires:	libjpeg-devel
@@ -18,12 +22,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
-
-%define gimp_ver 1.2
+%define		_gimpplugindir	%(gimp-config --gimpplugindir)/plug-ins
 
 %description
-XSane is a graphical scanning frontend. It uses the SANE library to talk to
-scanner.
+XSane is a graphical scanning frontend. It uses the SANE library to
+talk to scanner.
 
 %description -l pl
 XSane jest graficznym frontendem do skanowania. U¿ywa biblioteki SANE
@@ -40,10 +43,14 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
+%{__install} -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{applnkdir}/Graphics,%{_pixmapsdir}}
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT%{_libdir}/gimp/%{gimp_ver}/plug-ins
-ln -sf /usr/X11R6/bin/xsane $RPM_BUILD_ROOT%{_libdir}/gimp/%{gimp_ver}/plug-ins/xsane
+%{__install} %{SOURCE1} $RPM_BUILD_ROOT%{applnkdir}/Graphics
+%{__install} %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
+
+ln -sf %{_bindir}/xsane $RPM_BUILD_ROOT%{_gimpplugindir}/xsane
 
 gzip -9nf xsane.{ACCELKEYS,AUTHOR,BACKENDS,BUGS,CHANGES,LOGO,NEWS} \
 	xsane.{PROBLEMS,TODO,BEGINNERS-INFO,ONLINEHELP}
@@ -57,6 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/gimp/%{gimp_ver}/plug-ins/*
+%attr(755,root,root) %{_gimpplugindir}/*
 %{_datadir}/sane
 %{_mandir}/man1/*
+%{applnkdir}/Graphics/*
+%{_pixmapsdir}/*
