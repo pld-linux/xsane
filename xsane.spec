@@ -6,17 +6,18 @@ Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.91
-Release:	3
+Version:	0.92
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	b212c9aeb0b6c4b0ada625d512337337
+# Source0-md5:	a5504d63cc5c9edb9ec484bd74581177
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-gimp1.3.patch
+Patch2:		%{name}-po.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,7 +26,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
-BuildRequires:	gimp-devel >= 1.3.17
+BuildRequires:	gimp-devel >= 1:1.3.17
 BuildRequires:	gtk+2-devel >= 2.0.0
 %endif
 BuildRequires:	libjpeg-devel
@@ -48,6 +49,7 @@ do komunikacji ze skanerem.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 # AM_PATH_SANE
