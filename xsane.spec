@@ -2,7 +2,7 @@ Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.88
+Version:	0.90
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
@@ -36,9 +36,6 @@ do komunikacji ze skanerem.
 
 %build
 %{__autoconf}
-if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
-	CPPFLAGS="`pkg-config libpng12 --cflags`"
-fi
 %configure CPPFLAGS="$CPPFLAGS"
 %{__make}
 
@@ -52,7 +49,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 ln -sf %{_bindir}/xsane $RPM_BUILD_ROOT%{_gimpplugindir}/xsane
-
 
 %find_lang %{name}
 
