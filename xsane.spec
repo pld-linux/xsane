@@ -1,7 +1,7 @@
 Summary:	improved SANE frontend
 Summary(pl):	poprawiony frontend do SANE
 Name:		xsane
-Version:	0.72
+Version:	0.75
 Release:	1
 Group:		X11/Applications/Graphics
 License:	GPL
@@ -46,7 +46,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/gimp/%{gimp_ver}/plug-ins
 ln -sf /usr/X11R6/bin/xsane $RPM_BUILD_ROOT%{_libdir}/gimp/%{gimp_ver}/plug-ins/xsane
 
 gzip -9nf xsane.{ACCELKEYS,AUTHOR,BACKENDS,BUGS,CHANGES,LOGO,NEWS} \
-	xsane.{PROBLEMS,TODO,WIP}
+	xsane.{PROBLEMS,TODO,BEGINNERS-INFO,ONLINEHELP}
 
 %find_lang %{name}
 
