@@ -1,25 +1,22 @@
 #
 # Conditional build:
-%bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 1.3
+%bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 2.0
 #
 Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.92
-Release:	7
+Version:	0.96
+Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	a5504d63cc5c9edb9ec484bd74581177
+# Source0-md5:	32e4693c207d0380436c76096f8c157c
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
-# based on http://people.debian.org/~jblache/misc/xsane-0.92_gimp2.0.patch
-Patch1:		%{name}-gimp1.3.patch
-Patch2:		%{name}-po.patch
-Patch3:		%{name}-datadir.patch
+Patch1:		%{name}-datadir.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -28,7 +25,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
-BuildRequires:	gimp-devel >= 1:1.3.23
+BuildRequires:	gimp-devel >= 1:2.0.0
 BuildRequires:	gtk+2-devel >= 2.0.0
 %endif
 BuildRequires:	libjpeg-devel
@@ -51,39 +48,24 @@ do komunikacji ze skanerem.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 mv -f po/{sr,sr@Latn}.po
 mv -f po/{zh,zh_TW}.po
 
 %{__perl} -pi -e 's/ sr / sr\@Latn /;s/ zh/ zh_TW/' configure.in
 
-# AM_PATH_SANE
-head -n 622 aclocal.m4 | tail -n +457 > acinclude.m4
-%if %{with gtk1}
-cat >> acinclude.m4 <<EOF
-AC_DEFUN([AM_PATH_GTK2],[])
-AC_DEFUN([AM_PATH_GIMP_2_0],[])
-EOF
-%else
-cat >> acinclude.m4 <<EOF
-AC_DEFUN([AM_PATH_GTK],[])
-AC_DEFUN([AM_PATH_GIMP],[])
-AC_DEFUN([AM_PATH_GTK2],[AM_PATH_GTK_2_0(\$1,\$2,\$3)])
-])
-EOF
-%endif
-
 %build
-cp -f /usr/share/automake/config.* .
-touch po/POTFILES.in
 %{__gettextize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
-# some gettext-w/o-automake issues require passing absolute srcdir :o
 %configure \
-	--srcdir=`pwd`
+	%{?with_gtk1:--disable-gimp2} \
+	%{?with_gtk1:--disable-gtk2}
+
+# I don't really know why it desn't work without this one and
+# I don't know how to fix it in the right way...
+sed -ie '/^# Makevars gets/r po/Makevars' po/Makefile
+
 %{__make}
 
 %install
