@@ -36,7 +36,7 @@ passed to The GIMP for further processing.
 LDFLAGS="-s" ; export LDFLAGS
 CFLAGS="$RPM_OPT_FLAGS" ; export CFLAGS
 %configure 
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
