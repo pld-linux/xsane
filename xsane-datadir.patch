@@ -29,15 +29,6 @@
  
  MKINSTALLDIRS = @MKINSTALLDIRS@
  INSTALL = @INSTALL@
-@@ -32,7 +32,7 @@
- CC = @CC@
- INCLUDES = -I. -I$(srcdir) -I$(top_builddir)/include -I$(top_srcdir)/include @INCLUDES@
- DEFS = @DEFS@ -DLOCALEDIR=$(datadir)/locale
--CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=\$(xsanedocdir) -DPATH_SANE_DATA_DIR=\$(sanedatadir)
-+CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=\$(xsanedocdir) -DPATH_SANE_DATA_DIR=\$(datadir)
- CFLAGS   = @CFLAGS@ @SANE_CFLAGS@ @GIMP_CFLAGS@ @GTK_CFLAGS@
- LDFLAGS  = @LDFLAGS@ @SANE_LDFLAGS@
- LIBS     = @SANE_LIBS@ @GIMP_LIBS@ @GTK_LIBS@ @INTLLIBS@ @LIBS@
 @@ -60,19 +60,19 @@
  all: $(PROGRAMS)
  
@@ -95,3 +86,14 @@
  	done 
  
  xsane: $(XSANE_OBJS) $(LIBLIB)
+--- xsane-0.96/src/Makefile.in~	2004-10-23 13:55:07.844751168 +0000
++++ xsane-0.96/src/Makefile.in	2004-10-23 13:56:21.761514112 +0000
+@@ -32,7 +32,7 @@
+ CC = @CC@
+ INCLUDES = -I. -I$(srcdir) -I$(top_builddir)/include -I$(top_srcdir)/include @INCLUDES@
+ DEFS = @DEFS@ -DLOCALEDIR=$(datadir)/locale
+-CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=$(xsanedocdir) -DPATH_SANE_DATA_DIR=$(sanedatadir)
++CPPFLAGS = @CPPFLAGS@ -DPATH_XSANE_DOC_DIR=$(xsanedocdir) -DPATH_SANE_DATA_DIR=$(datadir)
+ CFLAGS   = @CFLAGS@ @SANE_CFLAGS@ @GIMP_CFLAGS@ @GTK_CFLAGS@
+ LDFLAGS  = @LDFLAGS@ @SANE_LDFLAGS@
+ LIBS     = @SANE_LIBS@ @GIMP_LIBS@ @GTK_LIBS@ @INTLLIBS@ @LIBS@
