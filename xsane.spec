@@ -7,7 +7,7 @@ Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.91
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
@@ -25,7 +25,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
-BuildRequires:	gimp-devel >= 1.3.15
+BuildRequires:	gimp-devel >= 1.3.17
 BuildRequires:	gtk+2-devel >= 2.0.0
 %endif
 BuildRequires:	libjpeg-devel
@@ -34,7 +34,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	sane-backends-devel >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_gimpplugindir	%(gimp-config --gimpplugindir)/plug-ins
+%define		_gimpplugindir	%(gimptool --gimpplugindir)/plug-ins
 
 %description
 XSane is a graphical scanning frontend. It uses the SANE library to
@@ -59,7 +59,7 @@ cat >> acinclude.m4 <<EOF
 AC_DEFUN([AM_PATH_GTK],[true])
 AC_DEFUN([AM_PATH_GTK2],[AM_PATH_GTK_2_0(\$1,\$2,\$3)])
 AC_DEFUN([AM_PATH_GIMP],[
-AM_PATH_GIMP_1_4(\$1,\$2)
+AM_PATH_GIMP_2_0(\$1,\$2)
 save_CPPFLAGS="\$CPPFLAGS"
 CPPFLAGS="\$CPPFLAGS \$GIMP_CFLAGS"
 AC_CHECK_HEADERS([libgimp/gimp.h libgimp/gimpfeatures.h])
@@ -82,7 +82,8 @@ touch po/POTFILES.in
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{_applnkdir}/Graphics,%{_pixmapsdir}}
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
