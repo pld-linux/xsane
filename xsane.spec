@@ -10,6 +10,7 @@ Version:	0.90
 Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
+#Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
