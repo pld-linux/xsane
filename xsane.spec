@@ -15,7 +15,7 @@ BuildRequires:	gtk+-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	gimp-devel
-BuildRoot:   	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define _prefix /usr/X11R6
 
