@@ -6,4 +6,5 @@ Comment[sv]=Ett GIMP-insticksprogram som erbjuder ett bildläsargränssnitt
 Comment[pl]=Wtyczka do programu GIMP z interfejsem do skanowania
 Icon=xsane.png
 Exec=xsane
+Encoding=UTF-8
 # vi: encoding=utf-8
