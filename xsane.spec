@@ -36,7 +36,7 @@ do komunikacji ze skanerem.
 %patch0 -p1
 
 %build
-autoconf
+%{__autoconf}
 if [ -f %{_pkgconfigdir}/libpng12.pc ] ; then
 	CPPFLAGS="`pkg-config libpng12 --cflags`"
 fi
