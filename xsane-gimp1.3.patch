@@ -1,0 +1,39 @@
+--- xsane-0.90/src/xsane.c.orig	2002-12-15 01:15:51.000000000 +0100
++++ xsane-0.90/src/xsane.c	2003-05-11 21:13:24.000000000 +0200
+@@ -7466,8 +7466,10 @@
+ #ifdef HAVE_LIBGIMP_GIMP_H
+   gtk_rc_parse(gimp_gtkrc());
+ 
++#if !GIMP_CHECK_VERSION(1,3,0)
+   gdk_set_use_xshm(gimp_use_xshm());
+ #endif
++#endif
+ 
+   /* before we open any windows we have to read the style file */
+   xsane_back_gtk_make_path(sizeof(filename), filename, "xsane", 0, "xsane-style", 0, ".rc", XSANE_PATH_LOCAL_SANE);
+--- xsane-0.90/src/xsane.h.orig	2002-12-14 12:53:46.000000000 +0100
++++ xsane-0.90/src/xsane.h	2003-05-11 21:07:08.000000000 +0200
+@@ -290,7 +290,8 @@
+ 
+ # ifdef HAVE_LIBGIMP_GIMPFEATURES_H
+ #  include <libgimp/gimpfeatures.h>
+-# else
++# endif
++# ifndef GIMP_CHECK_VERSION
+ #  define GIMP_CHECK_VERSION(major, minor, micro) 0
+ # endif /* HAVE_LIBGIMP_GIMPFEATURES_H */
+ 
+--- xsane-0.90/src/xsane-save.c.orig	2002-12-14 19:00:18.000000000 +0100
++++ xsane-0.90/src/xsane-save.c	2003-05-11 21:10:06.000000000 +0200
+@@ -3571,7 +3571,11 @@
+ static void xsane_gimp_run(char *name, int nparams, GimpParam * param, int *nreturn_vals, GimpParam ** return_vals)
+ {
+  static GimpParam values[2];
++#if GIMP_CHECK_VERSION(1,3,0)
++ GimpRunMode run_mode;
++#else
+  GimpRunModeType run_mode;
++#endif
+  char devname[1024];
+  char *args[2];
+  int nargs;

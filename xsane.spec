@@ -1,23 +1,35 @@
+#
+# Conditional build:
+# _with_gtk1	- use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 1.3
+#
 Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.90
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-gimp1.3.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
-BuildRequires:	gimp-devel
-BuildRequires:	gtk+-devel
+BuildRequires:	automake
+BuildRequires:	gettext-devel
+%if 0%{?_with_gtk1:1}
+BuildRequires:	gimp-devel >= 1.0.0
+BuildRequires:	gtk+-devel >= 1.2.0
+%else
+BuildRequires:	gimp-devel >= 1.3.0
+BuildRequires:	gtk+2-devel >= 2.0.0
+%endif
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	sane-backends-devel
+BuildRequires:	sane-backends-devel >= 1.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gimpplugindir	%(gimp-config --gimpplugindir)/plug-ins
@@ -33,10 +45,34 @@ do komunikacji ze skanerem.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
+# AM_PATH_SANE
+head -622 aclocal.m4 | tail +457 > acinclude.m4
+%if 0%{?_with_gtk1:1}
+echo 'AC_DEFUN([AM_PATH_GTK2],[])' >> acinclude.m4
+%else
+cat >> acinclude.m4 <<EOF
+AC_DEFUN([AM_PATH_GTK],[true])
+AC_DEFUN([AM_PATH_GTK2],[AM_PATH_GTK_2_0(\$1,\$2,\$3)])
+AC_DEFUN([AM_PATH_GIMP],[
+AM_PATH_GIMP_1_4(\$1,\$2)
+save_CPPFLAGS="\$CPPFLAGS"
+CPPFLAGS="\$CPPFLAGS \$GIMP_CFLAGS"
+AC_CHECK_HEADERS([libgimp/gimp.h libgimp/gimpfeatures.h])
+])
+EOF
+%endif
+echo 'AC_DEFUN([AM_FUNC_ALLOCA],[AC_FUNC_ALLOCA])' >> acinclude.m4
+cp -f /usr/share/automake/config.* .
+touch po/POTFILES.in
+%{__gettextize}
+%{__aclocal}
 %{__autoconf}
-%configure
+# some gettext-w/o-automake issues require passing absolute srcdir :o
+%configure \
+	--srcdir=`pwd`
 %{__make}
 
 %install
