@@ -53,7 +53,7 @@ do komunikacji ze skanerem.
 
 %build
 # AM_PATH_SANE
-head -622 aclocal.m4 | tail +457 > acinclude.m4
+head -n 622 aclocal.m4 | tail -n +457 > acinclude.m4
 %if 0%{?_with_gtk1:1}
 echo 'AC_DEFUN([AM_PATH_GTK2],[])' >> acinclude.m4
 %else
