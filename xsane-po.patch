@@ -1,0 +1,44 @@
+--- xsane-0.92/po/it.po.orig	Tue Aug  5 22:36:44 2003
++++ xsane-0.92/po/it.po	Wed Oct  8 12:21:10 2003
+@@ -686,7 +686,7 @@
+ "Size %d x %d pixel, %d bit/color, %d colors, %1.0f dpi x %1.0f dpi, %1.1f %s"
+ msgstr ""
+ "Dimensione %d x %d pixel, %d bit/colore, %d colori, %1.0f dpi x %1.0f dpi, %"
+-"1.1 %s"
++"1.1f %s"
+ 
+ #. TEXT_DESPECKLE_RADIUS
+ msgid "Despeckle radius:"
+--- xsane-0.92/po/ro.po.orig	Tue Aug  5 22:36:45 2003
++++ xsane-0.92/po/ro.po	Wed Oct  8 12:28:39 2003
+@@ -2353,7 +2353,7 @@
+ #. ERR_UNSUPPORTED_OUTPUT_FORMAT
+ #, c-format
+ msgid "Unsupported %d-bit output format: %s"
+-msgstr "Formatul de ie╨ire: %s pe %d biЧi nu este susЧinut"
++msgstr "Formatul de ie╨ire: %2$s pe %1$d biЧi nu este susЧinut"
+ 
+ #. WARN_VIEWER_IMAGE_NOT_SAVED
+ msgid "viewer image is not saved"
+--- xsane-0.92/po/ru.po.orig	Tue Aug  5 22:36:46 2003
++++ xsane-0.92/po/ru.po	Wed Oct  8 12:29:06 2003
+@@ -2115,7 +2115,7 @@
+ #. ERR_GIMP_BAD_DEPTH
+ #, c-format
+ msgid "GIMP can't handle depth %d bits/color"
+-msgstr "GIMP не поддерживает глубину цвета в %s бит на цвет"
++msgstr "GIMP не поддерживает глубину цвета в %d бит на цвет"
+ 
+ #. ERR_UNKNOWN_SAVING_FORMAT
+ msgid "Unknown file format for saving"
+--- xsane-0.92/po/sv.po.orig	Tue Aug  5 22:36:46 2003
++++ xsane-0.92/po/sv.po	Wed Oct  8 12:31:36 2003
+@@ -8,7 +8,7 @@
+ "POT-Creation-Date: 2003-08-05 22:36+0200\n"
+ "PO-Revision-Date: 2003-08-03 14:12+01:00\n"
+ "Last-Translator: Johan Bengtsson <jb@goteborg.bostream.se>\n"
+-"Language-Team: LANGUAGE <sv@li.org>\n"
++"Language-Team: Swedish <sv@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
