@@ -1,7 +1,7 @@
 Summary:	improved SANE frontend
 Summary(pl):	poprawiony frontend do SANE
 Name:		xsane
-Version:	0.75
+Version:	0.77
 Release:	1
 Group:		X11/Applications/Graphics
 License:	GPL
@@ -16,8 +16,8 @@ BuildRequires:	libtiff-devel
 BuildRequires:	gtk+-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_prefix	/usr/X11R6
-%define _mandir	/usr/X11R6/man
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 
 %define gimp_ver 1.2
 
