@@ -7,7 +7,7 @@ Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN): xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.91
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
@@ -25,7 +25,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gimp-devel >= 1.0.0
 BuildRequires:	gtk+-devel >= 1.2.0
 %else
-BuildRequires:	gimp-devel >= 1.3.0
+BuildRequires:	gimp-devel >= 1.3.15
 BuildRequires:	gtk+2-devel >= 2.0.0
 %endif
 BuildRequires:	libjpeg-devel
