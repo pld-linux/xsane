@@ -62,6 +62,7 @@ AM_PATH_GIMP_1_4(\$1,\$2)
 save_CPPFLAGS="\$CPPFLAGS"
 CPPFLAGS="\$CPPFLAGS \$GIMP_CFLAGS"
 AC_CHECK_HEADERS([libgimp/gimp.h libgimp/gimpfeatures.h])
+CPPFLAGS="\$save_CPPFLAGS"
 ])
 EOF
 %endif
