@@ -6,17 +6,18 @@ Summary:	Improved SANE frontend
 Summary(pl):	Ulepszony frontend do SANE
 Summary(zh_CN):	xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.97
+Version:	0.98b
 Release:	1
 License:	GPL
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	3d1f889d88c3462594febd53be58c561
+# Source0-md5:	6efcdc02047c4971b042180844e90e72
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-datadir.patch
+Patch2:		%{name}-pl.po-update.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,6 +49,7 @@ do komunikacji ze skanerem.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv -f po/{sr,sr@Latn}.po
 mv -f po/{zh,zh_TW}.po
@@ -62,7 +64,7 @@ mv -f po/{zh,zh_TW}.po
 	%{?with_gtk1:--disable-gimp2} \
 	%{?with_gtk1:--disable-gtk2}
 
-# I don't really know why it desn't work without this one and
+# I don't really know why it doesn't work without this one and
 # I don't know how to fix it in the right way...
 sed -ie '/^# Makevars gets/r po/Makevars' po/Makefile
 
