@@ -15,9 +15,8 @@ Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
 # Source0-md5:	cded872f2e7041f4a0f2dc4f0bbc5a77
 Source1:	%{name}.desktop
 Source2:	%{name}.png
-Patch0:		%{name}-DESTDIR.patch
-Patch1:		%{name}-datadir.patch
-Patch2:		%{name}-pl.po-update.patch
+Patch0:		%{name}-datadir.patch
+Patch1:		%{name}-pl.po-update.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -47,9 +46,8 @@ do komunikacji ze skanerem.
 
 %prep
 %setup -q
-#%patch0 -p1
+%patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 mv -f po/{sr,sr@Latn}.po
 mv -f po/{zh,zh_TW}.po
@@ -63,10 +61,6 @@ mv -f po/{zh,zh_TW}.po
 %configure \
 	%{?with_gtk1:--disable-gimp2} \
 	%{?with_gtk1:--disable-gtk2}
-
-# I don't really know why it doesn't work without this one and
-# I don't know how to fix it in the right way...
-sed -ie '/^# Makevars gets/r po/Makevars' po/Makefile
 
 %{__make}
 
