@@ -3,8 +3,8 @@
 %bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 2.0
 #
 Summary:	Improved SANE frontend
-Summary(pl.UTF-8):   Ulepszony frontend do SANE
-Summary(zh_CN.UTF-8):   xsane - 一个图形扫描程序
+Summary(pl.UTF-8):	Ulepszony frontend do SANE
+Summary(zh_CN.UTF-8):	xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.991
 Release:	1
