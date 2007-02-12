@@ -3,8 +3,8 @@
 %bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 2.0
 #
 Summary:	Improved SANE frontend
-Summary(pl):	Ulepszony frontend do SANE
-Summary(zh_CN):	xsane - Ò»¸öÍ¼ĞÎÉ¨Ãè³ÌĞò
+Summary(pl.UTF-8):   Ulepszony frontend do SANE
+Summary(zh_CN.UTF-8):   xsane - ä¸€ä¸ªå›¾å½¢æ‰«æç¨‹åº
 Name:		xsane
 Version:	0.991
 Release:	1
@@ -40,8 +40,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 XSane is a graphical scanning frontend. It uses the SANE library to
 talk to scanner.
 
-%description -l pl
-XSane jest graficznym frontendem do skanowania. U¿ywa biblioteki SANE
+%description -l pl.UTF-8
+XSane jest graficznym frontendem do skanowania. UÅ¼ywa biblioteki SANE
 do komunikacji ze skanerem.
 
 %prep
