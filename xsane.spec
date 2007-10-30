@@ -17,6 +17,7 @@ Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-datadir.patch
 Patch1:		%{name}-pl.po-update.patch
+Patch2:		%{name}-poMakefile.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,11 +49,12 @@ do komunikacji ze skanerem.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv -f po/{sr,sr@Latn}.po
 mv -f po/{zh,zh_TW}.po
 
-%{__perl} -pi -e 's/ sr / sr\@Latn /;s/ zh/ zh_TW/' configure.in
+%{__sed} -i -e 's/ sr / sr\@Latn /;s/ zh/ zh_TW/' configure.in
 
 %build
 %{__gettextize}
