@@ -1,18 +1,14 @@
-#
-# Conditional build:
-%bcond_with	gtk1	# use GTK+ 1.2 and GIMP 1.2 instead of GTK+ 2.0 and GIMP 2.0
-#
 Summary:	Improved SANE frontend
 Summary(pl.UTF-8):	Ulepszony frontend do SANE
 Summary(zh_CN.UTF-8):	xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.991
+Version:	0.995
 Release:	1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	cded872f2e7041f4a0f2dc4f0bbc5a77
+# Source0-md5:	5aaedb75973c3b13b136edec714e3fe8
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-datadir.patch
@@ -22,17 +18,14 @@ URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-%if %{with gtk1}
-BuildRequires:	gimp-devel >= 1.0.0
-BuildRequires:	gtk+-devel >= 1.2.0
-%else
 BuildRequires:	gimp-devel >= 1:2.0.0
 BuildRequires:	gtk+2-devel >= 1:2.0.0
-%endif
+BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	sane-backends-devel >= 1.0.0
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gimpplugindir	%(gimptool --gimpplugindir)/plug-ins
@@ -51,18 +44,15 @@ do komunikacji ze skanerem.
 %patch1 -p1
 %patch2 -p1
 
-mv -f po/{sr,sr@Latn}.po
 mv -f po/{zh,zh_TW}.po
 
-%{__sed} -i -e 's/ sr / sr\@Latn /;s/ zh/ zh_TW/' configure.in
+%{__sed} -i -e 's/ zh/ zh_TW/' configure.in
 
 %build
 %{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
-%configure \
-	%{?with_gtk1:--disable-gimp2} \
-	%{?with_gtk1:--disable-gtk2}
+%configure
 
 %{__make}
 
@@ -85,10 +75,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc xsane.{ACCELKEYS,AUTHOR,BACKENDS,BUGS,CHANGES,LOGO,NEWS,PROBLEMS,TODO,BEGINNERS-INFO,ONLINEHELP}
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_gimpplugindir}/*
+%doc ICM.TODO xsane.{ACCELKEYS,AUTHOR,BUGS,CHANGES,LOGO,NEWS,ONLINEHELP,PROBLEMS,ROOT,TODO}
+%attr(755,root,root) %{_bindir}/xsane
+%attr(755,root,root) %{_gimpplugindir}/xsane
 %{_datadir}/xsane
-%{_mandir}/man1/*
-%{_desktopdir}/*.desktop
-%{_pixmapsdir}/*
+%{_mandir}/man1/xsane.1*
+%{_desktopdir}/xsane.desktop
+%{_pixmapsdir}/xsane.png
