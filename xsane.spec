@@ -24,11 +24,12 @@ BuildRequires:	lcms-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	pkgconfig
 BuildRequires:	sane-backends-devel >= 1.0.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_gimpplugindir	%(gimptool --gimpplugindir)/plug-ins
+%define		_gimpplugindir	%(gimptool --gimpplugindir 2>/dev/null)/plug-ins
 
 %description
 XSane is a graphical scanning frontend. It uses the SANE library to
