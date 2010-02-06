@@ -2,13 +2,13 @@ Summary:	Improved SANE frontend
 Summary(pl.UTF-8):	Ulepszony frontend do SANE
 Summary(zh_CN.UTF-8):	xsane - 一个图形扫描程序
 Name:		xsane
-Version:	0.995
-Release:	2
+Version:	0.997
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 #Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
 Source0:	http://www.xsane.org/download/%{name}-%{version}.tar.gz
-# Source0-md5:	5aaedb75973c3b13b136edec714e3fe8
+# Source0-md5:	8377b3e3b792f3d2b7f13895467c7082
 Source1:	%{name}.desktop
 Source2:	%{name}.png
 Patch0:		%{name}-datadir.patch
