@@ -30,6 +30,6 @@ diff -ur xsane-0.991-o/src/Makefile.in xsane-0.991/src/Makefile.in
 -xsanedocdir = ${datadir}/sane/xsane/doc
 +sanedatadir = ${datadir}
 +xsanedocdir = ${datadir}/xsane/doc
+ desktopappdir = @datadir@/applications
+ pixmapdir = @datadir@/pixmaps
  
- MKINSTALLDIRS = @MKINSTALLDIRS@
- INSTALL = @INSTALL@
