@@ -1,0 +1,12 @@
+diff -urN xsane-0.999.org/configure.in xsane-0.999/configure.in
+--- xsane-0.999.org/configure.in	2013-05-22 23:16:55.000000000 +0200
++++ xsane-0.999/configure.in	2013-05-23 06:57:43.268529091 +0200
+@@ -83,7 +83,7 @@
+ AC_AIX
+ AC_MINIX
+ AC_ISC_POSIX
+-AM_PROG_CC_STDC
++AC_PROG_CC
+ AC_PROG_INSTALL
+ AC_PROG_MAKE_SET
+ AC_PROG_CPP
