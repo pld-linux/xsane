@@ -1,3 +1,6 @@
+# from Fedora
+# build against lcms 2.x
+# submitted to upstream (Oliver Rauch) via email, 2013-09-23
 From 30af0e2edbf061b71bed9536d826894449f0390d Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Mon, 23 Sep 2013 16:11:31 +0200

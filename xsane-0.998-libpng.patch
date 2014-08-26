@@ -1,3 +1,7 @@
+# from Fedora
+# fix building with libpng >= 1.5
+# submitted to upstream (Oliver Rauch) via email, 2011-11-21
+
 From bd29bb933cf80f397dd28286635da2aec58e6e6c Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Thu, 16 Aug 2012 11:26:54 +0200

@@ -1,3 +1,7 @@
+# from Fedora
+# update lib/snprintf.c to the latest version from LPRng that has a Free license
+# submitted to upstream (Oliver Rauch) via email, 2014-05-29
+
 diff -up xsane-0.999/lib/snprintf.c.OLD xsane-0.999/lib/snprintf.c
 --- xsane-0.999/lib/snprintf.c.OLD	2014-05-29 10:42:26.795419830 -0400
 +++ xsane-0.999/lib/snprintf.c	2014-05-29 10:48:58.544431002 -0400

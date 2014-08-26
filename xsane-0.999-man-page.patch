@@ -1,3 +1,7 @@
+# from Fedora
+# man page: update command line options
+# submitted to upstream (Oliver Rauch) via email, 2013-07-08
+
 From 2dbbd80a5fb80741729c7cd5027af058b9c08c2c Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Mon, 8 Jul 2013 17:46:06 +0200

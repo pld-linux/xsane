@@ -1,3 +1,6 @@
+# from Fedora
+# https://bugzilla.redhat.com/show_bug.cgi?id=198422
+# submitted to upstream (Oliver Rauch) via email, 2010-06-29
 From a2ef22d59904d5e53c3d58093b561fa1ab7127a6 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Thu, 16 Aug 2012 10:58:54 +0200

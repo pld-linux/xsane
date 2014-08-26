@@ -1,3 +1,8 @@
+# from Fedora
+# https://bugzilla.redhat.com/show_bug.cgi?id=624190
+# fix from: https://bugs.launchpad.net/ubuntu/+source/xsane/+bug/370818
+# submitted to upstream (Oliver Rauch) via email, 2011-06-01
+
 From d8bf0d3f0af16e208b52084f19a9a1287acbcea0 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Fri, 2 Sep 2011 11:56:26 +0200

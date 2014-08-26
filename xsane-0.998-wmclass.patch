@@ -1,3 +1,9 @@
+# from Fedora
+# https://bugzilla.redhat.com/show_bug.cgi?id=795085
+# set program name/wmclass so GNOME shell picks appropriate high resolution
+# icon file
+# submitted to upstream (Oliver Rauch) via email, 2013-06-04
+
 From a0b23d7e1991b23e2b9ab78bf382c55b9e24cfb9 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Fri, 25 May 2012 11:47:39 +0200

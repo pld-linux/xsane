@@ -1,3 +1,8 @@
+# from Fedora
+# https://bugzilla.redhat.com/show_bug.cgi?id=504344
+# distro-specific(?), upstream won't accept it: "don't show license dialog"
+# submitted to upstream (Oliver Rauch) anyway via email, 2013-06-04
+
 From 7018206ea45db2e8bdfeb67d33f3387c9678a407 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Thu, 16 Aug 2012 11:19:16 +0200

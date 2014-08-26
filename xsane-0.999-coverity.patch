@@ -1,3 +1,8 @@
+# from Fedora
+# fix issues found during static analysis that don't require far-reaching
+# refactoring
+# submitted to upstream (Oliver Rauch) via email, 2014-04-02
+
 From 9fe09c0e0746067f9e9774229b3d0beb35c5766b Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Wed, 2 Apr 2014 14:54:05 +0200

@@ -1,3 +1,7 @@
+# from Fedora
+# enable off-root building
+# submitted to upstream (Oliver Rauch) via email, 2010-06-23
+
 From 7f43255972b741ff178f94233ffff67c9779c247 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Thu, 16 Aug 2012 10:57:38 +0200

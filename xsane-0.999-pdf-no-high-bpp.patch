@@ -1,3 +1,7 @@
+# from Fedora
+# avoid producing PDFs with bpp > 8
+# submitted to upstream (Oliver Rauch) via email, 2013-09-09
+
 From c0686879ac66c1933aefbb62b69afb0c9a0db912 Mon Sep 17 00:00:00 2001
 From: Nils Philippsen <nils@redhat.com>
 Date: Mon, 9 Sep 2013 17:13:15 +0200
