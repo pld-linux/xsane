@@ -36,7 +36,7 @@ Patch53:	%{name}-build.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gimp-devel >= 1:2.0.0
 BuildRequires:	gtk+2-devel >= 1:2.0.0
 BuildRequires:	lcms2-devel
