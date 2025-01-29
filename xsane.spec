@@ -1,9 +1,13 @@
+#
+# Conditional build:
+%bcond_with	gimp		# build gimp plugin
+
 Summary:	Improved SANE frontend
 Summary(pl.UTF-8):	Ulepszony frontend do SANE
 Summary(zh_CN.UTF-8):	xsane - 一个图形扫描程序
 Name:		xsane
 Version:	0.999
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Applications/Graphics
 # Source0Download:	http://www.xsane.org/cgi-bin/sitexplorer.cgi?/download/
@@ -28,6 +32,8 @@ Patch12:	%{name}-0.999-lcms2.patch
 Patch13:	%{name}-0.999-coverity.patch
 Patch14:	%{name}-0.999-snprintf-update.patch
 Patch15:	%{name}-0.999-signal-handling.patch
+Patch16:	%{name}-configure-c99.patch
+Patch17:	replace-gtk_timeout-with-g_timeout.patch
 # PLD
 Patch50:	%{name}-datadir.patch
 Patch51:	%{name}-pl.po-update.patch
@@ -37,7 +43,7 @@ URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-tools
-BuildRequires:	gimp-devel >= 1:2.0.0
+%{?with_gimp:BuildRequires:	gimp-devel >= 1:2.0.0}
 BuildRequires:	gtk+2-devel >= 1:2.0.0
 BuildRequires:	lcms2-devel
 BuildRequires:	libjpeg-devel
@@ -60,42 +66,48 @@ do komunikacji ze skanerem.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
+%patch -P 8 -p1
+%patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
+%patch -P 15 -p1
+%patch -P 16 -p1
+%patch -P 17 -p1
 
-%patch50 -p1
-%patch51 -p1
-%patch52 -p1
-%patch53 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
+%patch -P 52 -p1
+%patch -P 53 -p1
 
 mv -f po/{zh,zh_TW}.po
 
 %{__sed} -i -e 's/ zh/ zh_TW/' configure.in
 
 %build
+cp -f %{_datadir}/automake/config.guess .
+cp -f %{_datadir}/automake/config.sub .
 %{__gettextize}
 %{__aclocal} -I m4
 %{__autoconf}
-%configure
+%configure \
+	%{__enable_disable gimp gimp}
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{_desktopdir},%{_pixmapsdir}}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -103,7 +115,10 @@ install -d $RPM_BUILD_ROOT{%{_gimpplugindir},%{_desktopdir},%{_pixmapsdir}}
 cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 cp -p %{SOURCE2} $RPM_BUILD_ROOT%{_pixmapsdir}
 
+%if %{with gimp}
+install -d $RPM_BUILD_ROOT%{_gimpplugindir}
 ln -sf %{_bindir}/xsane $RPM_BUILD_ROOT%{_gimpplugindir}/xsane
+%endif
 
 %find_lang %{name}
 
@@ -114,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ICM.TODO xsane.{ACCELKEYS,AUTHOR,BUGS,CHANGES,LOGO,NEWS,ONLINEHELP,PROBLEMS,ROOT,TODO}
 %attr(755,root,root) %{_bindir}/xsane
-%attr(755,root,root) %{_gimpplugindir}/xsane
+%{?with_gimp:%attr(755,root,root) %{_gimpplugindir}/xsane}
 %{_datadir}/xsane
 %{_mandir}/man1/xsane.1*
 %{_desktopdir}/xsane.desktop
