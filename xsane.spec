@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	gimp		# build gimp plugin
+%bcond_with	gimp		# GIMP plugin
 
 Summary:	Improved SANE frontend
 Summary(pl.UTF-8):	Ulepszony frontend do SANE
