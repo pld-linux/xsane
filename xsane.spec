@@ -54,6 +54,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	sane-backends-devel >= 1.0.0
 BuildRequires:	zlib-devel
+Requires(post,postun):	desktop-file-utils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_gimpplugindir	%(gimptool --gimpplugindir 2>/dev/null)/plug-ins
@@ -127,6 +128,12 @@ ln -sf %{_bindir}/xsane $RPM_BUILD_ROOT%{_gimpplugindir}/xsane
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+%update_desktop_database_post
+
+%postun
+%update_desktop_database_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
