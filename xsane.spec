@@ -39,6 +39,7 @@ Patch50:	%{name}-datadir.patch
 Patch51:	%{name}-pl.po-update.patch
 Patch52:	%{name}-poMakefile.patch
 Patch53:	%{name}-build.patch
+Patch54:	types.patch
 URL:		http://www.xsane.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -89,6 +90,7 @@ do komunikacji ze skanerem.
 %patch -P 51 -p1
 %patch -P 52 -p1
 %patch -P 53 -p1
+%patch -P 54 -p1
 
 mv -f po/{zh,zh_TW}.po
 

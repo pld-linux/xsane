@@ -1,0 +1,11 @@
+--- xsane-0.999/src/xsane-save.h.orig	2007-03-03 01:08:32.000000000 +0100
++++ xsane-0.999/src/xsane-save.h	2025-09-23 21:11:08.314068317 +0200
+@@ -50,7 +50,7 @@
+ 
+ 
+ extern int xsane_create_secure_file(const char *filename);
+-extern void xsane_cancel_save();
++extern void xsane_cancel_save(int*);
+ extern void xsane_convert_text_to_filename(char **filename);
+ extern int xsane_get_filesize(char *filename);
+ extern void xsane_ensure_counter_in_filename(char **filename, int counter_len);
